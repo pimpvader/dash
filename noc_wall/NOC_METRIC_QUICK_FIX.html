@@ -1,0 +1,429 @@
+<!--
+metrics quick fix
+
+Eric Hetzel
+9/3
+-->
+
+<html>
+
+
+
+<head>
+
+<title>METRIC_QUICK_FIX</title>
+<link href="NOC_METRIC_QUICK_FIX.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="./iad/NOC_ARRAY_TOPRIGHT.js"></script>
+<script src="./iad/NOC_ARRAY_TOPLEFT.js"></script>
+<script src="./iad/NOC_ARRAY_TOPMIDDLE.js"></script>
+<script src="./sjc/NOC_ARRAY_BOTTOMLEFT.js"></script>
+<script src="./sjc/NOC_ARRAY_BOTTOMRIGHT.js"></script>
+<script src="./sjc/NOC_ARRAY_BOTTOMMIDDLE.js"></script>
+<script>
+//initial (global) variables
+var SA=0;
+		var SAy=0;
+		var x=0;
+		var xy=1;
+		var y=2;
+		var ct=0;
+		var superarray=new Array();
+			superarray[0]=TM;
+			superarray[1]=BM;
+			superarray[2]=TL;
+			superarray[3]=BL;
+			superarray[4]=TR;
+			superarray[5]=TR;
+// ---------- 'start' script, loads the first images, and caches the next 8, (the target of the jump change)  --------
+function start(){
+
+		$('#cover').show();
+		console.log('start func');
+		$('#title')[0].innerHTML=('METRIC QUICK FIX');
+		
+		$('#MET1t')[0].innerHTML=superarray[SA][x][1];
+		$('#MET2t')[0].innerHTML=superarray[SA][x][2];
+		
+		$('#LOAD1').attr('src',superarray[SA][x][7]);
+		$('#LOAD2').attr('src',superarray[SA][x][8]);
+		$('#LOAD3').attr('src',superarray[SA][xy][5]);
+		$('#LOAD4').attr('src',superarray[SA][xy][6]);
+		$('#LOAD5').attr('src',superarray[SA][xy][7]);
+		$('#LOAD6').attr('src',superarray[SA][xy][8]);
+		$('#LOAD7').attr('src',superarray[SA][y][5]);
+		$('#LOAD8').attr('src',superarray[SA][y][6]);
+		
+		$('#MET1m').attr('src',superarray[SA][x][5]);
+		$('#MET2m').attr('src',superarray[SA][x][6]);
+		
+		$('#MET2m, #MET1m, #LOAD1, #LOAD2, #LOAD3, #LOAD4, #LOAD5, #LOAD6').load(function(){				
+			$('#title')[0].innerHTML=superarray[SA][x][0];
+			$('#cover').hide();
+		});
+		
+console.log('endstart-SA'+SA+' SAy'+SAy+' x'+x+' xy'+xy+' y'+y+' ct'+ct);		
+console.log('----------------------------------')	
+};				
+
+//------ 'run' target of next (and back) ---------------------------------------------------
+
+function run(){	
+	console.log('next/back click func');
+	$('#title')[0].innerHTML=superarray[SA][x][0];
+	if (ct%4==1) {
+		console.log('n-4m1');		
+		$('#MET1t')[0].innerHTML=superarray[SA][x][3];
+		$('#MET2t')[0].innerHTML=superarray[SA][x][4];
+		$('#MET1m').attr('src',superarray[SA][x][7]);
+		$('#MET2m').attr('src',superarray[SA][x][8]);
+		$('#LOAD1').attr('src',superarray[SAy][y][7]);
+		$('#LOAD2').attr('src',superarray[SAy][y][8]);				
+		console.log(superarray[SAy][y][7]);
+		console.log(superarray[SAy][y][8]);
+	}else if (ct%4==2){
+		console.log('n-4m2');
+		$('#title')[0].innerHTML=superarray[SA][x][0];
+		$('#MET1t')[0].innerHTML=superarray[SA][x][1];
+		$('#MET2t')[0].innerHTML=superarray[SA][x][2];
+		$('#MET1m').attr('src',superarray[SA][x][5]);
+		$('#MET2m').attr('src',superarray[SA][x][6]);
+		$('#LOAD3').attr('src',superarray[SAy][y][5]);
+		$('#LOAD4').attr('src',superarray[SAy][y][6]);
+		console.log(superarray[SAy][y][5]);
+		console.log(superarray[SAy][y][6]);
+		
+	}else if (ct%4==3){
+		console.log('n-4m3');
+		$('#title')[0].innerHTML=superarray[SA][x][0];
+		$('#MET1t')[0].innerHTML=superarray[SA][x][3];
+		$('#MET2t')[0].innerHTML=superarray[SA][x][4];
+		$('#MET1m').attr('src',superarray[SA][x][7]);
+		$('#MET2m').attr('src',superarray[SA][x][8]);
+		$('#LOAD5').attr('src',superarray[SAy][y][7]);
+		$('#LOAD6').attr('src',superarray[SAy][y][8]);
+		console.log(superarray[SAy][y][7]);
+		console.log(superarray[SAy][y][8]);
+		
+	}else if (ct%4==0){
+		console.log('n-4m0');
+		$('#title')[0].innerHTML=superarray[SA][x][0];
+		$('#MET1t')[0].innerHTML=superarray[SA][x][1];
+		$('#MET2t')[0].innerHTML=superarray[SA][x][2];
+		$('#MET1m').attr('src',superarray[SA][x][5]);
+		$('#MET2m').attr('src',superarray[SA][x][6]);
+		$('#LOAD7').attr('src',superarray[SAy][y][5]);
+		$('#LOAD8').attr('src',superarray[SAy][y][6]);
+		console.log(superarray[SAy][y][5]);
+		console.log(superarray[SAy][y][6]);
+	
+	};	
+console.log('endrun-SA'+SA+' SAy'+SAy+' x'+x+' xy'+xy+' y'+y+' ct'+ct);	
+		$('#MET2m, #MET1m').load(function(){		
+			$('#next').removeAttr('disabled');
+		});
+console.log('----------------------------------')	
+};
+
+// ------less function -- to decrease the time-----------------------------------
+
+
+function less(current){
+
+	if(current.contains('month')){
+		current=current.replace('month','week');
+	}else if(current.contains('week')){
+		current=current.replace('week','day');
+	} else if(current.contains('day')){
+		current=current.replace('day','4hr');
+	} else if(current.contains('4hr')){
+		current=current.replace('4hr','2hr');
+	} else if(current.contains('2hr')){
+		current=current.replace('2hr','hour');
+	} else {
+		alert('there is no more time');
+	};
+	console.log(current);
+	return current
+};
+
+// -----more function -- to increase the time
+
+
+function more(current){
+
+	if(current.contains('week')){
+		current=current.replace('week','month');
+	} else if(current.contains('day')){
+		current=current.replace('day','week');
+	} else if(current.contains('4hr')){
+		current=current.replace('4hr','day');
+	} else if(current.contains('2hr')){
+		current=current.replace('2hr','4hr');
+	} else if(current.contains('hour')){
+		current=current.replace('hour','2hr');
+	}else {
+		alert('I cannot remember any more');
+	};
+	console.log(current);
+	return current
+};
+
+//---------------------------------------------------------------------------------------------------------------
+// ------'beginning' initial start call, jquery input targets----------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------
+$(document).ready(function () {
+	
+	start();		
+// ---next click begin-------------------------------------
+	$('#next').click(function(){
+		$('#next').attr('disabled','disabled');
+		console.log('next clicked');
+		ct++;
+
+		var max=(superarray[SA].length-1);
+		if (ct%2==0){
+		if(x==max){
+				x=0;
+				y++;
+				SA++;
+				console.log('set x=0, y++, SA++');
+			} else if(y==max){
+				y=0;
+				SAy++;
+				x++;
+				console.log('set y=0, x++, SAy++')
+				if (SAy>(superarray.length-1)){
+					console.log('SAy'+SAy+'SAL'+superarray.length);
+					console.log('SAy==0-2');
+					SAy=0;
+				};
+			} else {
+				x++;
+				y++;
+				console.log('set x++, y++');
+			};	
+		};
+		
+		console.log('endnext-SA'+SA+' SAy'+SAy+' x'+x+' xy'+xy+' y'+y+' ct'+ct);	
+		run();	
+	});
+	
+
+	
+// ----back click begin --------------------------------------------------- 
+	$('#back').click(function() {
+	console.log('back clicked');
+	ct=ct+500;
+	ct--;
+		if (SA==0){
+		var SAm=superarray.length-1;
+		} else {
+		var SAm=SA-1;
+		};
+		
+		var max=(superarray[SAm].length);
+		if (ct%2==1){
+		if(x==0){
+				x=max;
+				y--;
+				SA--;
+				console.log('set x=0, y++, SA++');
+			} else if(y==0){
+				y=max;
+				SAy--;
+				x--;
+				console.log('set y=0, x++, SAy++')
+				if (SAy>(superarray.length-1)){
+					console.log('SAy'+SAy+'SAL'+superarray.length);
+					console.log('SAy==0-2');
+					SAy=0;
+				};
+			} else {
+				x--;
+				y--;
+				console.log('set x++, y++');
+			};	
+		};
+		
+		console.log('endback-SA'+SA+' SAy'+SAy+' x'+x+' xy'+xy+' y'+y+' ct'+ct);	
+		run();	
+	});
+
+	// ----jump click begin------------------------------------------  
+
+	$( '#jump' ).change(function () {
+	
+	var str = "";
+		$( '#jump option:selected' ).each(function() {
+			str += $( this ).text() + " ";
+			console.log(str);
+			console.log('jump selected');
+			
+			switch(str){
+			case "IAD AdServer ":
+				SA=0;
+			break;
+			case "SJC AdServer ":
+				SA=1;
+			break;
+			case "IAD BidPartner ":
+				SA=2;
+			break;
+			case "SJC BidPartner ":
+				SA=3;
+			break;
+			case "IAD Cache ":
+				SA=4;
+			break;
+			case "SJC Cache ":
+				SA=5;
+			break;
+			default:
+			break;
+		}
+		});		
+		console.log('SAy=SA');
+		SAy=SA;
+		x=0;
+		xy=1;
+		y=2;
+		ct=0;
+		console.log('endjump-SA'+SA+' SAy'+SAy+' x'+x+' xy'+xy+' y'+y+' ct'+ct);	
+		start();
+	
+	});
+// ---Time adjusters-----------------------------------------
+
+	$('#Tless').click(function(){
+		$('#MET1, #Tless').css("cursor","progress");
+		var current=$('#MET1m').attr('src');	
+		console.log(current);		
+		current=less(current);	
+		console.log(current);
+		$('#MET1m').attr('src',current);
+		$('#MET1m').load(function(){
+			$('#MET1, #Tless').css("cursor","auto");
+		});
+	});
+	
+	$('#Tmore').click(function(){
+		$('#MET1, #Tmore').css("cursor","progress");
+		var current=$('#MET1m').attr('src');	
+		console.log(current);		
+		current=more(current);	
+		console.log(current);
+		$('#MET1m').attr('src',current);
+		$('#MET1m').load(function(){
+			$('#MET1, #Tmore').css("cursor","auto");
+		});
+	});
+	
+	$('#Bless').click(function(){
+		$('#MET2, #Bless').css("cursor","progress");
+		var current=$('#MET2m').attr('src');	
+		console.log(current);		
+		current=less(current);
+		console.log(current);
+		$('#MET2m').attr('src',current);
+		$('#MET2m').load(function(){
+			$('#MET2, #Bless').css("cursor","auto");
+		});		
+	});
+	
+	$('#Bmore').click(function(){
+		$('#MET2, #Bmore').css("cursor","progress");
+		var current=$('#MET2m').attr('src');	
+		console.log(current);		
+		current=more(current);
+		console.log(current);
+		$('#MET2m').attr('src',current);	
+		$('#MET2m').load(function(){
+			$('#MET2, #Bmore').css("cursor","auto");
+		});
+	});
+	
+//-------Details-------------------------------
+	
+	$('#Tleg').click(function(){
+		var current=$('#MET1m').attr('src');
+		current=current.replace('hide','show');
+		window.open(current);
+	});
+	
+	$('#Bleg').click(function(){
+		var current=$('#MET2m').attr('src');
+		current=current.replace('hide','show');
+		window.open(current);
+	});
+	
+	
+	
+	
+//------------------fin-------------------------	
+	
+});
+
+
+
+</script>
+</head>
+
+
+
+<body>
+	
+	
+	<div id='MET1' >
+		<div id='title'>Metric Quick Fix</div>
+			<div>
+				<img id='MET1m' src="http://www.dataversity.net/wp-content/uploads/2013/03/do.jpeg" />
+			</div>
+			<div id='MET1t'>
+				ValueClick
+			</div>	
+		
+	</div>
+
+	<div id='MET2' >
+		
+			<div>
+				<img id='MET2m' src="http://www.dataversity.net/wp-content/uploads/2013/03/do.jpeg" />
+			</div>
+			<div id='MET2t'>
+				ValueClick
+			</div>	
+		
+	</div>
+	
+	<img id='LOAD1' src='http://imgs.xkcd.com/comics/ld50.png'/>
+	<img id='LOAD2' src='http://imgs.xkcd.com/comics/ld50.png'/>
+	<img id='LOAD3' src='http://imgs.xkcd.com/comics/ld50.png'/>
+	<img id='LOAD4' src='http://imgs.xkcd.com/comics/ld50.png'/>
+	<img id='LOAD5' src='http://imgs.xkcd.com/comics/ld50.png'/>
+	<img id='LOAD6' src='http://imgs.xkcd.com/comics/ld50.png'/>
+	<img id='LOAD7' src='http://imgs.xkcd.com/comics/ld50.png'/>
+	<img id='LOAD8' src='http://imgs.xkcd.com/comics/ld50.png'/>
+	<img id='cover' src='http://images3.wikia.nocookie.net/__cb20091220093938/familyguy/images/5/55/Cookie_Monster.jpg'/>
+	
+	<button id='next'>--></button>
+	<button id='back'><--</button>
+	<button id='Tless'>Shorter</button>
+	<button id='Tmore'>Longer</button>
+	<button id='Bless'>Shorter</button>
+	<button id='Bmore'>Longer</button>
+	<button id='Tleg'>Details</button>
+	<button id='Bleg'>Details</button>
+	<select id='jump'>
+		<option>-----</option>
+		<option>IAD AdServer</option>
+		<option>SJC AdServer</option>
+		<option>IAD BidPartner</option>
+		<option>SJC BidPartner</option>
+		<option>IAD Cache</option>
+		<option>SJC Cache</option>
+	</select>
+	
+</body>
+
+</html>

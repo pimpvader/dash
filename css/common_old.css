@@ -1,0 +1,269 @@
+body{
+	margin: 0px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	/*background: url(../img/cubes.png) repeat 0 0;*/
+	background-color: #eee;
+	font-size: 12px;
+}
+
+a:visited,a:link{
+	text-decoration: none;
+	color: #eee;
+}
+
+a:hover{
+	text-decoration: none;
+	color: #8f8f8f;
+}
+
+#header{
+	min-width: 850px;
+	width: 100%;
+	height: 55px;
+	background-color: #151b1f;
+	/*border-bottom: 1px solid #666;*/
+	font-weight: bold;
+	position: fixed;
+	top: 0;
+	-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.45);
+	-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.45);
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.45);
+}
+
+.container{
+	min-width: 780px;
+	/*height: 100%;*/
+	margin: 0 auto;
+	color: #eee;
+}
+
+#header ul{
+	list-style: none;
+	float: right;
+	margin: 0;
+	padding: 0;
+	/*border-left: 1px solid #444;
+	border-right: 1px solid #111;*/
+	list-style: none;
+}
+
+#header li{
+	float: left;
+	padding: 20px;
+	/*border-right: 1px solid #444;
+	border-left: 1px solid #111;*/
+}
+
+#pageContainer{
+	color: black;
+	padding: 65px 10px 10px 10px;
+}
+
+#pageContainer * a:visited,#pageContainer * a:link{
+	text-decoration: none;
+	color: black;
+}
+
+#pageContainer * a:hover{
+	text-decoration: underline;
+	color: red;
+}
+
+#loginContainer{
+
+}
+
+input{
+	outline:none;
+	text-align:right;
+	margin-bottom:5px;
+}
+
+.queueContainer{
+	border-bottom:1px #ccc solid;
+	width:49%;
+}
+
+#changeQueue{
+	float:left;
+	border-right:1px #ccc solid;
+}
+
+#netopsQueue{
+	float:right;
+	border-left:1px #ccc solid;
+}
+
+#login-box{
+	float: right;
+	text-align: right;
+	margin-top: 15px;
+}
+
+#login-un,#login-pw{
+	padding:5px;
+	text-align: left;
+	border: 1px solid #999;
+	/*-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);*/
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+textarea{
+	outline:none;
+	resize:none;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 12px;
+}
+
+input:focus,select:focus,textarea:focus,button:focus{
+	outline:none;
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 100, 250, 0.6);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 100, 250, 0.6);
+	box-shadow: 0px 0px 8px rgba(0, 100, 250, 0.6);
+}
+
+.formContainer{
+	width:600px;
+	margin:0 auto;
+	text-align:right;
+	padding:10px 100px 10px 100px;
+}
+
+.listTable{
+	min-width: 700px;
+	margin: 0 auto;
+	/*border-bottom: 1px #999 solid;*/
+	text-align:center;
+	padding: 0px;
+	cellspacing: 0px;
+	border-spacing: 0px;
+}
+
+.listTable th,td{
+	border-right: #888 solid 1px;
+	border-bottom: #888 solid 1px;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+#headerMenu_Notifications{
+	right: 30px;
+	width: 145px;
+}
+
+#headerMenu_Notifications li{
+	text-align: right;
+}
+
+#headerMenu_Maintenance{
+	right: 141px;
+	width: 110px;
+}
+
+#headerMenu_Maintenance li{
+	text-align: right;
+}
+
+#headerMenu_FiresDash{
+	right: 254px;
+	width: 90px;
+}
+
+#headerMenu_FiresDash li{
+	text-align: right;
+}
+
+#headerMenu_Metrics{
+	right: 461px;
+	width: 100px;
+}
+
+#headerMenu_Metrics li{
+	text-align: right;
+}
+
+#headerMenu_Links{
+	right: 544px;
+	width: 120px;
+}
+
+#headerMenu_Links li{
+	text-align: right;
+}
+
+ul li ul {
+	position: absolute;
+	top: 55px;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	display: none;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transiton: opacity 0.2s;
+	-moz-transition: opacity 0.2s;
+	-ms-transition: opacity 0.2s;
+	-o-transition: opacity 0.2s;
+	-transition: opacity 0.2s;
+}
+
+ul li ul li { 
+	background: #151b1f;
+	padding: 10px 20px 10px 10px !important;*/
+	display: block; 
+	color: #eee;
+	width: 100%;
+
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);*/
+}
+
+ul li ul li:hover { 
+	background: #bbb;
+	color: #555;
+}
+
+ul li:hover ul {
+	display: block;
+	opacity: 1;
+	visibility: visible;
+}
+
+ul li:hover {
+	background: #bbb;
+	color: #555;
+	cursor:default;
+}
+
+ul a:hover li {
+	cursor:pointer;
+}
+
+#footer {
+	text-align:center;
+	padding-top:5px;
+	font-size:24px;
+	position:fixed;
+	left:0px;
+	bottom:0px;
+	height:30px;
+	width:100%;
+	background: rgba(100,100,100,0.5);
+}
+
+#previewEmailFormContainer{
+	text-align:left;
+}
+
+.previewEmailForm {
+	word-wrap: normal;
+	margin-left:15px;
+	float:right;
+	text-align:left;
+	width:530px;
+}

@@ -1,0 +1,161 @@
+body{
+	background:#e8eef0;
+	/*padding-top:70px;*/
+	padding-bottom:50px;
+}
+/*#pageContainer{
+	margin-bottom:10px;
+}*/
+.navbar-brand-image{
+	margin-right:10px;
+	vertical-align:text-bottom;
+	width:20px;
+}
+.popover-title{
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.popover-content{
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.listTable{
+        width:100%;
+        margin: 0 auto;
+        /*border-bottom: 1px #999 solid;*/
+        text-align:center;
+        padding: 0px;
+        cellspacing: 0px;
+        border-spacing: 0px;
+}
+.homePane_deviceList_DC{
+	text-align:right;
+	display:none;
+}
+.homePane_deviceList_deviceType{
+	background-color:#f5f5f5;
+	display:table-row;
+	cursor:pointer;
+}
+.listTable th,.listTable td{
+        border-right: #888 solid 1px;
+        border-bottom: #888 solid 1px;
+        padding-left:10px;
+        padding-right:10px;
+}
+.formContainer{
+        max-width:650px;
+        min-width:600px;
+        margin:0 auto;
+        /*text-align:right;*/
+        /*padding:10px 100px 10px 100px;*/
+}
+.formContainer label{
+	/* margin-right:10px; */
+}
+#previewEmailFormContainer{
+        text-align:left;
+}
+.generateEmailForm{
+	padding:10px;
+}
+.generateEmailForm hr{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.previewEmailForm{
+        word-wrap: normal;
+        margin-left:15px;
+        float:right;
+        text-align:left;
+        width:550px;
+}
+input,select,textarea{
+	outline:none;
+	text-align:left;
+	margin-bottom:5px;
+}
+.form-button{
+	margin-top:10px;
+}
+.issue{
+	border-radius:4px;
+	/*border:1px #ddd solid;*/
+	padding:5px;
+	word-wrap:break-word;
+	margin-bottom:5px;
+}
+#serverInfo_search{
+	min-width:225px;
+}
+#gangliaAlertsTable th span{
+	font-weight:normal;
+	cursor:pointer;
+}
+#activityEventsTable_12h .panel-body,#activityEventsTable_24h .panel-body,#activityEventsTable_7d .panel-body{
+	padding:5px !important;
+	word-wrap:break-word;
+}
+#viewHostnameOptions.btn,#viewSentEmail.btn{
+	padding-left:0px;
+	padding-right:0px;
+}
+#darkBackgroundLayer_successMessage{
+	background:white;
+	margin:0 auto;
+	text-align:center;
+	text-color:black;
+}
+@keyframes loading{
+	from {
+		-webkit-transform:rotate(0deg);
+		-moz-transform:rotate(0deg);
+		-o-transform:rotate(0deg);
+	}
+	to {
+		-webkit-transform:rotate(360deg);
+		-moz-transform:rotate(360deg);
+		-o-transform:rotate(360deg);
+	}
+}
+@-webkit-keyframes loading{
+	from {
+		-webkit-transform:rotate(0deg);
+		-moz-transform:rotate(0deg);
+		-o-transform:rotate(0deg);
+	}
+	to {
+		-webkit-transform:rotate(360deg);
+		-moz-transform:rotate(360deg);
+		-o-transform:rotate(360deg);
+	}
+}
+.rotate{
+	animation: loading 0.8s;
+	-webkit-animation: loading 0.8s;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite; /*Safari and Chrome*/
+	overflow:hidden;
+}
+.visible-email-template{
+	display:inline;
+}
+.hidden-email-template{
+	display:none;
+}
+.btn-generate-email-submit{
+	margin-top:10px;
+	/*float:right;*/
+}
+.node-label { font-size:24px; }
+.node { stroke-width:1;stroke:#000 !important }
+.wan-link { stroke-width:6; }
+.wan-1g { }
+.wan-10g { stroke-width:6; }
+.status-up { stroke:#33BB55;fill:#33BB55; }
+.status-down { stroke:#FF0022;fill:#FF0022; }
+.status-unknown { stroke:#AAA;fill:#AAA; }
+.status-unmanaged { stroke:blue;fill:blue; }
+.identify { stroke:orange !important;fill:orange !important; } /* used to quickly identify an HTML SVG element */
+
+.mce-tinymce { float:right !important; } /* This is to align the editor with the floated inputs */

@@ -1,0 +1,121 @@
+<!--<META HTTP-EQUIV="REFRESH" CONTENT="30; url=TM_HADOOP_3.html" />
+-->
+<html>
+<!--
+NOC WALL METRICS
+8/1/2013  - created  -Eric Hetzel
+8/7/2013  - Added relevant metrics (iad adserver)  -EH
+8/9/2013  - Revamp such that all is in one script file aid from Pete Tomasik  -EH,PT
+9/25/2013 - Edited/Renamed such that screen are organized by location, not title ex, Top Right, not IAD Bidpartner, to make edits to screens easier  --EH
+-->
+<head>
+
+<title>NocWall_TOP_MIDDLE</title>
+<link href="./../NOC_WALL_style.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="NOC_ARRAY_TOPMIDDLE.js"></script>
+
+<script>
+$(document).ready(function () {
+	var x=0;
+	var y=1;
+	var max=(TM.length-1)
+	console.log('length='+max);
+
+	setInterval(function(){
+		console.log('value of x='+x);
+		$('#title')[0].innerHTML=TM[x][0];
+		$('#MET1t')[0].innerHTML=TM[x][1];
+		$('#MET2t')[0].innerHTML=TM[x][2];
+		$('#MET3t')[0].innerHTML=TM[x][3];
+		$('#MET4t')[0].innerHTML=TM[x][4];
+		$('#MET1m').attr('src',TM[x][5]);
+		$('#MET2m').attr('src',TM[x][6]);
+		$('#MET3m').attr('src',TM[x][7]);
+		$('#MET4m').attr('src',TM[x][8]);
+		$('#LOAD1').attr('src',TM[y][5]);
+		$('#LOAD2').attr('src',TM[y][6]);
+		$('#LOAD3').attr('src',TM[y][7]);
+		$('#LOAD4').attr('src',TM[y][8]);
+		console.log(TM[x][0]);
+		
+		if(x==max){
+			x=0;
+			y++
+			console.log('set x=0, y++');
+		} else if(y==max){
+			y=0;
+			x++;
+			console.log('set y=0, x++')
+		} else {
+			x++;
+			y++;
+			console.log('set x++, y++');
+		}
+	},30000);
+	
+	//console.log('OUT!!!');
+	
+});
+
+
+
+</script>
+
+</head>
+
+<body>
+
+<center id="title">TOP MIDDLE</center>
+
+		<div id='MET1' >
+		<center>
+			<div>
+				<img id='MET1m' src="http://i.imgur.com/lzitKK4.png" />
+			</div>
+			<div id='MET1t'>
+				Conversant
+			</div>	
+		</center>
+		</div>
+		
+		<div id='MET2' >
+		<center>
+			<div>
+				<img id='MET2m' src="http://i.imgur.com/lzitKK4.png"/>
+			</div>
+			<div id='MET2t'>
+				Conversant
+			</div>	
+		</center>
+		</div>
+
+		<div id='MET3' >
+		<center>
+			<div>
+				<img id='MET3m' src="http://i.imgur.com/lzitKK4.png"/>
+			</div>
+			<div id='MET3t'>
+				Conversant
+			</div>	
+		</center>
+		</div>
+		
+		<div id='MET4' >
+		<center>
+			<div>
+				<img id='MET4m' src="http://i.imgur.com/lzitKK4.png"/>
+			</div>
+			<div id='MET4t'>
+				Conversant
+			</div>	
+		</center>
+		</div>
+		
+		<img id='LOAD1' src="http://imgs.xkcd.com/comics/sphere.png"/>
+		<img id='LOAD2' src="http://imgs.xkcd.com/comics/sphere.png"/>
+		<img id='LOAD3' src="http://imgs.xkcd.com/comics/sphere.png"/>
+		<img id='LOAD4' src="http://imgs.xkcd.com/comics/sphere.png"/>
+		
+</body>
+</html>

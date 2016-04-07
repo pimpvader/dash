@@ -1,0 +1,74 @@
+/*
+<!--
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Droid Sans'), local('DroidSans'), url(http://themes.googleusercontent.com/static/fonts/droidsans/v3/s-BiyweUPV0v-yRb-cjciBsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+} -->
+*/
+
+body
+{
+
+margin:0px;
+background-color:#123456;
+}
+
+#title{
+color:#FFFFFF;
+font-size:350%;
+
+}
+#MET1 {
+position:fixed;
+
+top:70px;
+left:5px;
+width:49%;
+height:44%;
+}
+#MET2 {
+position:fixed;
+
+bottom:10px;
+left:5px;
+width:49%;
+height:44%;
+}
+#MET3 {
+position:fixed;
+
+top:70px;
+right:5px;
+width:49%;
+height:44%;
+}
+#MET4 {
+position:fixed;
+
+bottom:10px;
+right:5px;
+width:49%;
+height:44%;
+}
+
+#MET1t, #MET2t, #MET3t, #MET4t{
+font-size:250%;
+color:#CCFFFF;
+}
+
+
+#MET1m, #MET2m, #MET3m, #MET4m{
+width:100%;
+height:90%;
+
+}
+
+#LOAD1, #LOAD2, #LOAD3, #LOAD4{
+width:1px;
+height:1px;
+position:absolute;
+top:1px;
+left:1px;
+}

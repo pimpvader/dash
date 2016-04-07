@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<style>
+			body{
+				background-color:#000000;
+				font-size:55px;
+				width:650px;
+				float:left;
+				text-align:center;
+				font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+			}
+			.timeA{
+				color:#9ff;
+				margin-top:15px;
+				font-weight:bold;
+			}
+			.timeB{
+				color:#0f9;
+				margin-top:15px;
+				font-weight:bold;
+			}
+		</style>
+
+		<script src="../js/jquery.js"></script>
+		<script src="../js/moment.min.js"></script>
+		<script src="../js/moment-timezone.min.js"></script>
+		<script>
+			$(document).ready(function () {
+				function update() {
+					$('#date-utc').html(moment.utc().format('ddd, MMM D, YYYY'));
+					$('#time-utc').html(moment.utc().format('hh:mm:ss A'));
+
+					$('#date-cet').html(moment.tz('Europe/Amsterdam').format('ddd, MMM D, YYYY'));
+					$('#time-cet').html(moment.tz('Europe/Amsterdam').format('hh:mm:ss A'));
+
+					$('#date-est').html(moment.tz("America/New_York").format('ddd, MMM D, YYYY'));
+					$('#time-est').html(moment.tz("America/New_York").format('hh:mm:ss A'));
+
+					$('#date-cst').html(moment.tz("America/Chicago").format('ddd, MMM D, YYYY'));
+					$('#time-cst').html(moment.tz("America/Chicago").format('hh:mm:ss A'));
+
+					$('#date-pst').html(moment.tz("America/Los_Angeles").format('ddd, MMM D, YYYY'));
+					$('#time-pst').html(moment.tz("America/Los_Angeles").format('hh:mm:ss A'));
+				}
+
+				setInterval(update, 1000); 
+			});
+
+		</script>
+
+	</head> 
+
+	<body>
+		<div class='timeA'>
+			<b><u>UTC</u></b><br>
+			<div id='date-utc'>Loading...</div>
+			<div id='time-utc'>Loading...</div>
+		</div>
+
+		<div class='timeB'>
+			<b><u>Amsterdam (CET)</u></b><br>
+			<div id='date-cet'>Loading...</div>
+			<div id='time-cet'>Loading...</div>
+		</div>
+
+		<div class='timeA'>
+			<b><u>Washington DC (EST)</u></b><br>
+			<div id='date-est'>Loading...</div>
+			<div id='time-est'>Loading...</div>
+		</div>
+
+		<div class='timeB'>
+			<b><u>Chicago (CST)</u></b><br>
+			<div id='date-cst'>Loading...</div>
+			<div id='time-cst'>Loading...</div>
+		</div>
+
+		<div class='timeA'>
+			<b><u>San Jose (PST)</u></b><br>
+			<div id='date-pst'>Loading...</div>
+			<div id='time-pst'>Loading...</div>
+		</div>
+	</body>
+</html>

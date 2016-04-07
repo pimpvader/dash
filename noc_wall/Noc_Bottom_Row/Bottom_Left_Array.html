@@ -1,0 +1,68 @@
+<html>
+<!--
+cWall Edits Top Left  
+1.23.2015 - Created Page -Kenneth Mroz, Tony Aikara  
+-->
+<head>  
+<title> Noc_Array_Bottom_Left</title>  
+<link rel="stylesheet" type="text/css" href="./../Noc_Inner_Wall.css"> 
+</head>
+<body>
+<div id="grphtitle"></div>
+<br>
+
+         <div>
+                <center>
+
+                                <img id='Grph1' src='#' />
+
+                </center>
+        </div>
+
+<center>
+<table cellpadding=0 cellspacing=0 style="width:100%;margin:0 auto;height:100px;background-color:#FFFFFF ">
+
+  <tr>
+
+<td> <font id="legendsjc" class="legendsize"> SJC </font> &#160&#160&#160&#160&#160<font id="legendiad" class="legendsize"> IAD </font> &#160&#160&#160&#160&#160 <font id="legendams" class="legendsize">
+AMS </font> </td>
+
+
+
+  </tr>
+
+</table>
+</center>
+<p>
+</p>
+<script> 
+	var NSY=new Array();
+	x=0;
+	NSY=[
+	["NSY Messaging (36h)", "http://tsdb2.dc.dotomi.net/q?start=36h-ago&ignore=14&m=sum:rate:nsy.messaging%7Bstatus_code=*%7D&o=&yrange=%5B0:%5D&nokey&wxh=1920x722&png"],
+	["NSY Registration (36h)", "http://tsdb2.dc.dotomi.net/q?start=36h-ago&ignore=10&m=sum:rate:dma.requests%7Brequest_type=REGISTRATION,dc=*%7D&o=&yrange=%5B0:%5D&nokey&wxh=1920x722&png"]];
+
+	document.getElementById("grphtitle").innerHTML= NSY[x][0];
+	document.getElementById("Grph1").src= NSY[x][1];
+	x++;
+	console.log(document.getElementById("grphtitle").innerHTML);
+	console.log(document.getElementById("Grph1").src);
+
+	
+	setInterval(function(){
+		document.getElementById("grphtitle").innerHTML= NSY[x][0];
+		document.getElementById("Grph1").src= NSY[x][1];
+		console.log(document.getElementById("grphtitle").innerHTML);
+		console.log(document.getElementById("Grph1").src);
+		if(x==0){
+			x=1;
+		}else{
+			x=0;
+		}
+		
+	},60000);
+
+</script>  
+</body>
+</html>
+~         
