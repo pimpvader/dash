@@ -1,0 +1,141 @@
+<html>
+	<style>
+		body{
+			background-color:#000000;
+			margin:0px;
+			border:5px solid #353535;
+		}
+
+		.issueTitle{
+			display:none;
+			font-size:54px;
+			color:FF0000;
+			margin-top:40px;
+		}
+
+		.issueList{
+			display:none;
+		}
+
+		#titleM{
+			color:0066FF;
+		}
+
+		#titleF{
+			color:FF0000;
+		}
+
+		#titleC{
+			color:FFFF33;
+		}
+
+		#titleD{
+			color:66FF00;
+		}
+
+		#centerContainer{
+			text-align: center;
+		}
+	</style>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<title>NOC | FireBoard</title>
+		
+		<script>
+			var url = 'list.php?getList=fireBoard';
+			
+			function getJSONData(){
+				
+				var obj = $.parseJSON(
+					jQuery.ajax({
+					url: url, 
+					async: false,
+					dataType: 'json'
+					}).responseText
+				);
+				
+				return obj;
+			}
+			
+			function pushIssues(Issues){
+				console.log(Issues);
+				console.log(Issues.length);
+				var fireCount=0,maintCount=0,canaryCount=0,deployCount=0;
+		
+				if ( Issues.length>0 ) {
+					for(var i=0; i<Issues.length; i++) {
+						if(Issues[i].eventType == 'fire'){
+							if(fireCount==0){
+								$('#titleF').show();
+								$('#fires').show();
+								fireCount=1;
+							}
+							$('#fires').append("<div class='issue'>"+Issues[i].eventDesc+"</div>");
+						}
+						if(Issues[i].eventType == 'maint'){
+							if(maintCount==0){
+								$('#titleM').show();
+								$('#maint').show();
+								maintCount=1;
+							}
+							$('#maint').append("<div class='issue'>"+Issues[i].eventDesc+"</div>");
+						}
+						if(Issues[i].eventType == 'canary'){
+							if(canaryCount==0){
+								$('#titleC').show();
+								$('#canary').show();
+								canaryCount=1;
+							}
+							$('#canary').append("<div class='issue'>"+Issues[i].eventDesc+"</div>");
+						}
+						if(Issues[i].eventType == 'deploy'){
+							if(deployCount==0){
+								$('#titleD').show();
+								$('#deploy').show();
+								deployCount=1;
+							}
+							$('#deploy').append("<div class='issue'>"+Issues[i].eventDesc+"</div>");
+						}
+					}
+				}else{
+					$('#fires').show();
+					$('#fires').append("<div style='margin-top:500px;' class='issue'>No issues at this time.</div>");
+				}
+				$('.issue').css({"color":"white","font-size":"42px"});
+			}
+			
+			$(document).ready(function () {
+			
+				var Issues = getJSONData();
+				pushIssues(Issues);
+				
+				setInterval(function(){
+					Issues = getJSONData();
+					
+					$(".issue").remove();
+					$(".issueTitle").hide();
+					console.log('Refreshed list.');
+					
+					pushIssues(Issues);
+				}, 10000);
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="centerContainer">
+			<div id="titleF" class="issueTitle">Current Fires</div>
+			<div id="fires" class="issueList"></div>
+
+			<div id="titleD" class="issueTitle">Deployments</div>
+			<div id="deploy" class="issueList"></div>
+			
+			<div id="titleC" class="issueTitle">Canaries</div>
+			<div id="canary" class="issueList"></div>
+			
+			<div id="titleM" class="issueTitle">Maintenance</div>
+			<div id="maint" class="issueList"></div>
+		</div>
+	</body>
+
+</html>
